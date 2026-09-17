@@ -11,11 +11,11 @@ Pastikan SQL Server 2008 R2 sudah di update ke versi terbaru atau versi terakhir
 
 ## Tahap Kedua
 
-Cek Certifates - Local Computer dengan cara :
+Cek Certificates - Local Computer dengan cara :
 
 `Windows + R -> certlm.msc -> Personal -> Certifates`
 
-Apabila kosong (akar masalah yang membuat error 0x2746) silahkan buat terlebih dahulu Certifates nya dengan menggunakan skrip dibawah ini : 
+Apabila kosong (akar masalah yang membuat error 0x2746) silahkan buat terlebih dahulu Certificates nya dengan menggunakan skrip dibawah ini : 
 
 ``` 
 [Version]
@@ -43,9 +43,10 @@ _continue_ = "IPAddress=192.168.100.127&" (IPAddress disesuaikan dengan IP Serve
 
  ```
  Kemudian simpan dengan nama cert.inf dan jalankan perinta berikut di command prompt :
+ 
 ``` certrq -new C:\cert.inf C:\cert.cer ```
 
-Setelah berhasil membuat Certifates silahkan cek kembali pada Certifates - Local Computer apakah Certifates sudah ada di folder Personal.
+Setelah berhasil membuat Certificates silahkan cek kembali pada Certificates - Local Computer apakah Certificates sudah ada di folder Personal.
 
 Cek sertifikat dengan command berikut pada Power Shell dan pastikan signature nya SHA-256 :
 ```
@@ -67,15 +68,15 @@ EKU        : Server Authentication
  ```
 
 ## Tahap Ketiga
-Beri akses private key ke service NT Service pada Certifates
+Beri akses private key ke service NT Service pada Certificates
 
-`Klik kanan pada Certifates -> All Task -> Manage Private Keys -> Security -> Add NETWORK Service -> Permisions For System -> Read -> Apply/OK `
+`Klik kanan pada Certificates -> All Task -> Manage Private Keys -> Security -> Add NETWORK Service -> Permisions For System -> Read -> Apply/OK `
 
 Setelahnya lakukan restart service MSSQLSERVER dengan command prompt
 ``` net stop MSSQLSERVER && net start MSSQLSERVER ```
 
-dan langkah terakhir cek Certifates di registry dengan command berikut :
+dan langkah terakhir cek Certificates di registry dengan command berikut :
 ```reg query "HKLM\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQLServer\SuperSocketNetLib" /v Certificate ```
 
 TARAA... sampai sini error 0x2746 sudah solved, 
-Jika ingin menambahkan Certificate ke sql server maka lanjut ke tahap selanjutnya jika ingin pasang ssl di server (opsional)
+Jika ingin menambahkan Certificates ke sql server maka lanjut ke tahap selanjutnya jika ingin pasang ssl di server (opsional)
