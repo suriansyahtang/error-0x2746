@@ -44,7 +44,7 @@ _continue_ = "IPAddress=192.168.100.127&" (IPAddress disesuaikan dengan IP Serve
  ```
  Kemudian simpan dengan nama cert.inf dan jalankan perinta berikut di command prompt :
  
-``` certrq -new C:\cert.inf C:\cert.cer ```
+``` certreq -new C:\cert.inf C:\cert.cer ```
 
 Setelah berhasil membuat Certificates silahkan cek kembali pada Certificates - Local Computer apakah Certificates sudah ada di folder Personal.
 
